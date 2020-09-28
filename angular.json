@@ -124,6 +124,14 @@
           }
         }
       }
-    }},
-  "defaultProject": "peachtree"
+    }
+  },
+  "defaultProject": "peachtree",
+  "schematics": {
+    "@schematics/angular": {
+      "component": {
+        "changeDetection": "OnPush"
+      }
+    }
+  }
 }
