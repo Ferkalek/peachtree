@@ -1,0 +1,35 @@
+@import "../../../styles/variables.scss";
+
+:host {
+  flex: 1 1 auto;
+  padding-right: 27px;
+
+  .ptb-form-control {
+    width: 100%;
+    position: relative;
+    margin-bottom: 0;
+
+    input {
+      padding: 0 20px 4px 10px;
+      font-size: 17px;
+      font-weight: 200;
+      border-bottom-width: 1px;
+    }
+  }
+
+  .clear-search-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    transform: translateY(-50%);
+    color: $gray-dark-color;
+
+    &:hover {
+      color: $gray-light-color;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import "../../../styles/variables.scss";
+
+:host {
+  display: flex;
+  align-items: center;
+
+  p {
+    padding-right: 15px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .filter-btns {
+    display: flex;
+
+    button {
+      border: 1px solid $gray-color;
+      color: $regular-color;
+      background: transparent;
+      padding: 5px 30px 5px 15px;
+      position: relative;
+
+      &:hover {
+        color: $gray-dark-color;
+      }
+
+      &:before,
+      &:after {
+        content: "";
+        display: block;
+        border: 7px solid transparent;
+        border: 5px solid transparent;
+        position: absolute;
+        right: 10px;
+      }
+
+      &:before {
+        border-bottom: 10px solid $gray-light-color;
+        border-bottom: 10px solid $gray-dark-color;
+        top: 0;
+      }
+
+      &:after {
+        border-top: 10px solid $gray-light-color;
+        top: 16px;
+      }
+    }
+
+    button:not(:last-child) {
+      border-right-color: transparent;
+    }
+  }
+}

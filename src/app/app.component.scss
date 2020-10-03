@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .ptb-main {
+    flex: 1 1 auto;
+  }
+}
+
+h1 {
+  span {
+    position: absolute;
+    left: -3000px;
+  }
+
+  img {
+    max-width: 350px;
+  }
+}

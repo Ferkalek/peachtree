@@ -1,0 +1,30 @@
+@import "../../../styles/variables.scss";
+
+:host {
+  background: $white-color;
+  display: block;
+
+  .ptb-section-header {
+    padding: 14px 15px;
+
+    .ptb-icon {
+      width: 24px;
+    }
+  }
+
+  .ptb-content-wrap {
+    padding: 10px 20px 20px;
+  }
+
+  .transactions-list {
+    border-top: 1px solid $gray-light-color;
+    border-bottom: 1px solid $gray-light-color;
+  }
+
+  .tool-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0 20px;
+    align-items: center;
+  }
+}

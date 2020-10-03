@@ -1,0 +1,21 @@
+@import "../../styles/variables.scss";
+
+:host {
+  h2 {
+    font-size: 47px;
+    font-weight: 200;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  }
+
+  a {
+    text-decoration: none;
+    color: $blue-color;
+    font-size: 20px;
+    font-weight: 200;
+
+    &:hover {
+      color: $royalblue-color;
+    }
+  }
+}

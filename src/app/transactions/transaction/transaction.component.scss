@@ -1,0 +1,61 @@
+@import "../../../styles/variables.scss";
+
+.transaction {
+  position: relative;
+  border-top: 1px solid $gray-light-color;
+  border-right: 2px solid $gray-light-color;
+  border-bottom: 1px solid $gray-light-color;
+  display: flex;
+  align-items: center;
+  padding: 7px;
+
+  & > div {
+    padding: 0 16px;
+  }
+
+  &--decor {
+    width: 8px;
+    height: calc(100% + 2px);
+    position: absolute;
+    top: -1px;
+    left: -8px;
+    z-index: 1;
+  }
+
+  &--data {
+    font-weight: 300;
+    font-size: 15px;
+    flex-basis: 87px;
+    min-width: 87px;
+  }
+
+  &--icon {
+    display: flex;
+
+    img {
+      max-width: 40px;
+    }
+  }
+
+  &--text {
+    flex-grow: 1;
+
+    h4 {
+      font-weight: 400;
+      line-height: 1;
+      font-size: 16px;
+      margin: 7px 0 -1px;
+    }
+
+    p {
+      font-weight: 300;
+      font-size: 15px;
+    }
+  }
+
+  &--amount {
+    flex-basis: 120px;
+    min-width: 120px;
+    text-align: right;
+  }
+}

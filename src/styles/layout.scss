@@ -1,0 +1,47 @@
+.ptb-header {
+  background-color: $white-color;
+  border-top: 1px solid $orange-color;
+  border-bottom: 3px solid $orange-color;
+  padding: 18px 0 6px;
+}
+
+.ptb-main {
+  background-image: url("/assets/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding: 65px 0 60px;
+}
+
+.ptb-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.ptb-section-header {
+  background-color: $green-dark-colo;
+  color: $white-color;
+  text-align: center;
+  position: relative;
+
+  .ptb-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  h2,
+  h3 {
+    font-weight: 300;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+}

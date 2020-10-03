@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DesignPageComponent } from './design-page.component';
+import { FilterTransactionsComponent } from './filter-transactions.component';
 
-describe('DesignPageComponent', () => {
-  let component: DesignPageComponent;
-  let fixture: ComponentFixture<DesignPageComponent>;
+describe('FilterTransactionsComponent', () => {
+  let component: FilterTransactionsComponent;
+  let fixture: ComponentFixture<FilterTransactionsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DesignPageComponent ]
+      declarations: [ FilterTransactionsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DesignPageComponent);
+    fixture = TestBed.createComponent(FilterTransactionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

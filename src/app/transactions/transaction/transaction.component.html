@@ -1,1 +1,13 @@
-<p>transaction works!</p>
+<div class="transaction" *ngIf="transaction">
+  <span class="transaction--decor" [style.background]="transaction.categoryCode"></span>
+  <div class="transaction--data">{{transaction.dates.valueDate | datePars}}</div>
+  <div class="transaction--icon">
+    <img [src]="transaction.merchant.image" [alt]="transaction.merchant.name">
+  </div>
+  <div class="transaction--text">
+    <h4>{{transaction.merchant.name}}</h4>
+    <p>{{transaction.transaction.type}}</p>
+  </div>
+  <div class="transaction--amount">
+    {{transaction.transaction.amountCurrency.amount | amountFormat:transaction.transaction.creditDebitIndicator}}</div>
+</div>
