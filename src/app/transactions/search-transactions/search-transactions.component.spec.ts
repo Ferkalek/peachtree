@@ -1,16 +1,18 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { NgxsModule } from "@ngxs/store";
+import { TransactionsState } from "../state/transaction.state";
 
-import { SearchTransactionsComponent } from './search-transactions.component';
+import { SearchTransactionsComponent } from "./search-transactions.component";
 
-describe('SearchTransactionsComponent', () => {
+describe("SearchTransactionsComponent", () => {
   let component: SearchTransactionsComponent;
   let fixture: ComponentFixture<SearchTransactionsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchTransactionsComponent ]
-    })
-    .compileComponents();
+      declarations: [SearchTransactionsComponent],
+      imports: [NgxsModule.forRoot([TransactionsState])],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +21,7 @@ describe('SearchTransactionsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

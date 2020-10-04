@@ -1,16 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { NgxsModule } from "@ngxs/store";
+import { TransactionsState } from "../state/transaction.state";
 
-import { TransferFormComponent } from './transfer-form.component';
+import { TransferFormComponent } from "./transfer-form.component";
 
-describe('TransferFormComponent', () => {
+describe("TransferFormComponent", () => {
   let component: TransferFormComponent;
   let fixture: ComponentFixture<TransferFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TransferFormComponent ]
-    })
-    .compileComponents();
+      declarations: [TransferFormComponent],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+        NgxsModule.forRoot([TransactionsState]),
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +28,7 @@ describe('TransferFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
