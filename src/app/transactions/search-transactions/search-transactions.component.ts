@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { Store } from "@ngxs/store";
 import { SearchTransactionsAction } from "../actions/transactions.actions";
 
@@ -8,18 +8,16 @@ import { SearchTransactionsAction } from "../actions/transactions.actions";
   styleUrls: ["./search-transactions.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchTransactionsComponent implements OnInit {
+export class SearchTransactionsComponent {
   public searchQuery: string = "";
 
   constructor(private store: Store) {}
 
-  ngOnInit(): void {}
-
-  onSearch() {
+  public onSearch(): void {
     this.store.dispatch(new SearchTransactionsAction(this.searchQuery));
   }
 
-  clear() {
+  public clear(): void {
     this.searchQuery = "";
     this.onSearch();
   }

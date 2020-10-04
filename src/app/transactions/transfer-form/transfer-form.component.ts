@@ -8,6 +8,7 @@ import {
 } from "@angular/forms";
 import { Select, Store } from "@ngxs/store";
 import { Observable } from "rxjs";
+import { ASubscriptionCollector } from "src/app/shared/abstract-classes/subscription-collector.abstract-class";
 import { CreateTransactionAction } from "../actions/transactions.actions";
 import { TransactionsState } from "../state/transaction.state";
 import {
@@ -22,7 +23,7 @@ import { TransactionsService } from "../transactions.service";
   styleUrls: ["./transfer-form.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TransferFormComponent implements OnInit {
+export class TransferFormComponent extends ASubscriptionCollector {
   @Select(TransactionsState.transactions) readonly transactions$: Observable<
     ITransactionsDTO[]
   >;
@@ -46,44 +47,53 @@ export class TransferFormComponent implements OnInit {
     private fb: FormBuilder,
     private transactionsService: TransactionsService,
     private store: Store
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-    this.transactions$.subscribe((transactions: ITransactionsDTO[]) => {
-      this.accountBalans =
-        Math.round(
-          transactions.reduce((accountBalans: number, t: ITransactionsDTO) => {
-            return t.transaction.creditDebitIndicator ===
-              TransactionIndicator.Credit
-              ? accountBalans +
-                  Number(t.transaction.amountCurrency.amount) * 100
-              : accountBalans -
-                  Number(t.transaction.amountCurrency.amount) * 100;
-          }, 0)
-        ) / 100;
+    this.subscriptions.push(
+      this.transactions$.subscribe((transactions: ITransactionsDTO[]) => {
+        this.accountBalans =
+          Math.round(
+            transactions.reduce(
+              (accountBalans: number, t: ITransactionsDTO) => {
+                return t.transaction.creditDebitIndicator ===
+                  TransactionIndicator.Credit
+                  ? accountBalans +
+                      Number(t.transaction.amountCurrency.amount) * 100
+                  : accountBalans -
+                      Number(t.transaction.amountCurrency.amount) * 100;
+              },
+              0
+            )
+          ) / 100;
 
-      this.transferForm.patchValue({
-        fromAccount: `Free Checking(4692) - $${this.accountBalans}`,
-      });
-    });
+        this.transferForm.patchValue({
+          fromAccount: `Free Checking(4692) - $${this.accountBalans}`,
+        });
+      })
+    );
   }
 
   public sendTransfer() {
-    this.transactionsService
-      .sendTransfer(this.transferForm.value.amount)
-      .subscribe(
-        (transaction: ITransactionsDTO) => {
-          this.store.dispatch(new CreateTransactionAction(transaction));
-          this.transferForm.reset();
-          this.transferForm.patchValue({
-            fromAccount: `Free Checking(4692) - $${this.accountBalans}`,
-            toAccount: "Georgia Power Electric Company",
-          });
-        },
-        (err) => {
-          console.log("Error", err);
-        }
-      );
+    this.subscriptions.push(
+      this.transactionsService
+        .sendTransfer(this.transferForm.value.amount)
+        .subscribe(
+          (transaction: ITransactionsDTO) => {
+            this.store.dispatch(new CreateTransactionAction(transaction));
+            this.transferForm.reset();
+            this.transferForm.patchValue({
+              fromAccount: `Free Checking(4692) - $${this.accountBalans}`,
+              toAccount: "Georgia Power Electric Company",
+            });
+          },
+          (err) => {
+            console.log("Error", err);
+          }
+        )
+    );
   }
 
   public getField(field: string) {

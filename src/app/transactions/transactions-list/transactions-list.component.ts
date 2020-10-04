@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { Select } from "@ngxs/store";
 import { Observable } from "rxjs";
 import { TransactionsState } from "../state/transaction.state";
@@ -10,11 +10,7 @@ import { ITransactionsDTO } from "../transactions.interfaces";
   styleUrls: ["./transactions-list.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TransactionsListComponent implements OnInit {
+export class TransactionsListComponent {
   @Select(TransactionsState.filteredAndSortedTransactions)
   readonly transactions$: Observable<ITransactionsDTO[]>;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

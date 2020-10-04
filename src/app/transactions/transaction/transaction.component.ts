@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Input,
-} from "@angular/core";
+import { Component, ChangeDetectionStrategy, Input } from "@angular/core";
 import { ITransactionsDTO } from "../transactions.interfaces";
 
 @Component({
@@ -12,10 +7,6 @@ import { ITransactionsDTO } from "../transactions.interfaces";
   styleUrls: ["./transaction.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TransactionComponent implements OnInit {
+export class TransactionComponent {
   @Input() public transaction: ITransactionsDTO;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }
