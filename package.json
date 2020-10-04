@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "dev": "concurrently \"cd server && npm start\" \"npm start\"",
+    "start": "cd server && npm start",
+    "start:dev": "ng serve",
+    "dev": "concurrently \"cd server && npm start\" \"npm start:dev\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
