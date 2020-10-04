@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "cd server && npm start",
-    "start:dev": "ng serve",
-    "dev": "concurrently \"cd server && npm start\" \"npm start:dev\"",
-    "build": "ng build --prod --configuration=production",
+    "start": "ng serve",
+    "start:server": "node index.js",
+    "dev": "concurrently \"npm run start:server\" \"npm start\"",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -27,7 +27,9 @@
     "concurrently": "^5.3.0",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1001.3",
