@@ -1,6 +1,6 @@
 <p>Sort by</p>
 <div class="filter-btns">
-  <button>Date</button>
-  <button>Beneficiary</button>
-  <button>Amount</button>
+  <button [class]="getMarker(dateSort)" (click)="onSort(dateSort)">Date</button>
+  <button [class]="getMarker(beneficiarySort)" (click)="onSort(beneficiarySort)">Beneficiary</button>
+  <button [class]="getMarker(amountSort)" (click)="onSort(amountSort)">Amount</button>
 </div>

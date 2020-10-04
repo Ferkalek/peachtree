@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 import { TransactionsComponent } from "./transactions.component";
 import { TransactionsListComponent } from "./transactions-list/transactions-list.component";
 import { TransactionComponent } from "./transaction/transaction.component";
@@ -22,6 +24,11 @@ import { SearchTransactionsComponent } from "./search-transactions/search-transa
     FilterTransactionsComponent,
     SearchTransactionsComponent,
   ],
-  imports: [CommonModule, NgxsModule.forFeature([TransactionsState])],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxsModule.forFeature([TransactionsState]),
+  ],
 })
 export class TransactionsModule {}

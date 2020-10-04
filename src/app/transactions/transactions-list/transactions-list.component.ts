@@ -11,9 +11,8 @@ import { ITransactionsDTO } from "../transactions.interfaces";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionsListComponent implements OnInit {
-  @Select(TransactionsState.transactions) readonly transactions$: Observable<
-    ITransactionsDTO[]
-  >;
+  @Select(TransactionsState.filteredAndSortedTransactions)
+  readonly transactions$: Observable<ITransactionsDTO[]>;
 
   constructor() {}
 

@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Store } from "@ngxs/store";
+import { SearchTransactionsAction } from "../actions/transactions.actions";
 
 @Component({
   selector: "ptb-search-transactions",
@@ -7,11 +9,18 @@ import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchTransactionsComponent implements OnInit {
-  constructor() {}
+  public searchQuery: string = "";
+
+  constructor(private store: Store) {}
 
   ngOnInit(): void {}
 
+  onSearch() {
+    this.store.dispatch(new SearchTransactionsAction(this.searchQuery));
+  }
+
   clear() {
-    console.log("...clear works");
+    this.searchQuery = "";
+    this.onSearch();
   }
 }

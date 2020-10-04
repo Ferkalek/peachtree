@@ -36,13 +36,20 @@
 
       &:before {
         border-bottom: 10px solid $gray-light-color;
-        border-bottom: 10px solid $gray-dark-color;
         top: 0;
       }
 
       &:after {
         border-top: 10px solid $gray-light-color;
         top: 16px;
+      }
+
+      &.sort-asc:before {
+        border-bottom: 10px solid $gray-dark-color;
+      }
+
+      &.sort-desc:after {
+        border-top: 10px solid $gray-dark-color;
       }
     }
 

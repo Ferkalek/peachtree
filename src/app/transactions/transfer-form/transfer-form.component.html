@@ -7,21 +7,27 @@
   <h3>Make a Transfer</h3>
 </div>
 
-<form class="transfer-form">
+<form class="transfer-form" [formGroup]="transferForm" (ngSubmit)="sendTransfer()">
   <div class="ptb-form-control">
     <label>From account</label>
-    <input type="text" value="Free Checking(4692) - $5824.76" disabled>
+    <input type="text" formControlName="fromAccount">
   </div>
   <div class="ptb-form-control">
     <label>To account</label>
-    <input type="text" value="Georgia Power Electric Company" disabled>
+    <input type="text" formControlName="toAccount">
   </div>
   <div class="ptb-form-control">
     <label>Amount</label>
-    <input type="text" placeholder="$ 0.00">
+    <input type="text" formControlName="amount" placeholder="$ 0.00" required>
+    <div class="errors-block">
+      <div *ngIf="getField('amount').touched && getField('amount').hasError('required')">Amount is required.</div>
+      <div *ngIf="getField('amount').touched && getField('amount').hasError('pattern')">Enter only number.</div>
+      <div *ngIf="getField('amount').touched && getField('amount').hasError('invalidBalans')">You do not have enough
+        money.</div>
+    </div>
   </div>
 
   <div class="ptb-btn-wrap">
-    <button class="ptb-btn" type="submit">Submit</button>
+    <button class="ptb-btn" type="submit" [disabled]="transferForm.invalid">Submit</button>
   </div>
 </form>
