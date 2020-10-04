@@ -6,7 +6,7 @@
     "start": "ng serve",
     "start:server": "node index.js",
     "dev": "concurrently \"npm run start:server\" \"npm start\"",
-    "build": "ng build",
+    "build": "ng build --prod --configuration=production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
