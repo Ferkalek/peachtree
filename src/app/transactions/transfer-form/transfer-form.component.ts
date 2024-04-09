@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import {
-  FormGroup,
+  UntypedFormGroup,
   Validators,
-  FormBuilder,
+  UntypedFormBuilder,
   AbstractControl,
   ValidatorFn,
 } from "@angular/forms";
@@ -30,7 +30,7 @@ export class TransferFormComponent extends ASubscriptionCollector {
 
   public accountBalans: number = 0;
 
-  public transferForm: FormGroup = this.fb.group({
+  public transferForm: UntypedFormGroup = this.fb.group({
     fromAccount: [{ value: "", disabled: true }],
     toAccount: [{ value: "Georgia Power Electric Company", disabled: true }],
     amount: [
@@ -44,7 +44,7 @@ export class TransferFormComponent extends ASubscriptionCollector {
   });
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private transactionsService: TransactionsService,
     private store: Store
   ) {
