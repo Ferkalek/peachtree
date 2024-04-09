@@ -23,7 +23,6 @@
     "@angular/platform-browser": "~11.2.14",
     "@angular/platform-browser-dynamic": "~11.2.14",
     "@angular/router": "~11.2.14",
-    "@ngxs/devtools-plugin": "^6.1.0",
     "@ngxs/logger-plugin": "^3.7.0",
     "@ngxs/store": "^3.7.0",
     "concurrently": "^5.3.0",
